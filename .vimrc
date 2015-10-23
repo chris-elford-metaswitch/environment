@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 " We don't want vi compatibility.
 set nocompatible
 
@@ -16,7 +19,7 @@ set bg=dark
 
 " Keep track of whitespace.
 set list
-set listchars=tab:â–¸\ ,
+set listchars=tab:â–,eol:$
 
 " By default tabs are 2 characters, replace tabs with spaces.  These can be
 " overwridden by language-specific files in the ftplugin directory.
