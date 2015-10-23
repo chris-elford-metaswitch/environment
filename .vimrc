@@ -11,6 +11,10 @@ filetype plugin indent on
 " http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set backspace=indent,eol,start
 
+" Appearance
+colorscheme evening
+set scrolloff=2
+
 " Syntax highlighting should be on
 syntax on
 
@@ -56,5 +60,15 @@ function! FoldArgumentsOntoMultipleLines()
 endfunction
 nnoremap <leader>9 :call FoldArgumentsOntoMultipleLines()<CR>
 
-" Strip trailing whitespace from the current file.
-nmap <leader>rtw :%s/\s*$//<CR>:noh<CR>:w<CR>
+" Search settings
+set incsearch
+set ignorecase
+set smartcase
+
+" Make j and k do the right thing on wrapped lines.
+nmap j gj
+nmap k gk
+
+" Hightlight trailing whitespace and strip if needed.
+match Todo /\s\+$/
+nmap <leader>rtw :%s/\s*$//<CR>:noh<CR>
