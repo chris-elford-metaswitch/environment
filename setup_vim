@@ -1,0 +1,32 @@
+#!/usr/bin/python
+"""
+Script to put vim config in place.
+
+Creates links to vim config files so that editing can be done inside the git
+repo.  This should encourage me to keep my files checked in.
+"""
+import os
+import sys
+
+repo = os.path.dirname(os.path.realpath(__file__))
+home = os.getenv('HOME')
+
+
+def main():
+    add_link('.vimrc')
+    add_link('.vim')
+
+
+def add_link(filename):
+    homefile = os.path.join(home, filename)
+    repofile = os.path.join(repo, filename)
+    if os.path.exists(homefile):
+        print("%s already exists." % homefile)
+        sys.exit(1)
+    else:
+        print("Installing '%s' at '%s'..." % (repofile, homefile))
+        os.symlink(repofile, homefile)
+        print("  Done.")
+
+if __name__ == '__main__':
+    main()    
